@@ -19,9 +19,34 @@ typedef enum {
   WAVE_TRIANGLE
 } wave_type_t;
 
+typedef enum {
+  C = 523, //262,
+  D = 587, //294,
+  E = 330,
+  F = 349,
+  G = 392,
+  A = 440,
+  B = 494,
+  REST = 0,
+
+} tones_t;
+
+typedef enum {
+  WHOLE = 4000000,
+  HALF = 2000000,
+  QTR = 1000000,
+  EIT = 500000,
+
+} times_t;
+
+typedef struct {
+  tones_t tone;
+  times_t time;
+} notes_t;
+
 void audio_init();
 void audio_send_1kHz();
-void audio_send_tone(wave_type_t type, unsigned int hz);
+void audio_send_tone(wave_type_t type, notes_t note);
 unsigned int audio_max_tone_hz();
 unsigned int audio_min_tone_hz();
 

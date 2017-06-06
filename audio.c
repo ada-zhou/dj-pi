@@ -79,6 +79,11 @@ unsigned waveform_triangle[64];
 unsigned waveform_saw[64];
 unsigned waveform_sine[];
 
+
+
+
+
+
 /* This PWM module scales the 19.2MHz clock down to 8.192MHz.
    It respresents a signal as 8192 PWM pulses: 64 samples of
    128 pulses. So magnitude of a sample is the number of pulses
@@ -125,7 +130,7 @@ unsigned int audio_set_clock(unsigned int frequency) {
 */
 
 
-void audio_send_tone(wave_type_t type, unsigned int hz) {
+void audio_send_tone(wave_type_t type, notes_t note) {
   unsigned* waveform;
   if (type == WAVE_TRIANGLE) {
     waveform = waveform_triangle;
@@ -136,8 +141,10 @@ void audio_send_tone(wave_type_t type, unsigned int hz) {
   } else {
     waveform = waveform_square;
   }
+
+
   
-  if (audio_set_clock(hz)) {
+  if (audio_set_clock(note.tone)) {
     // Start the clock
     // enable (ENAB) + oscillator 
     // raspbian has this as plla
@@ -170,9 +177,9 @@ void audio_send_tone(wave_type_t type, unsigned int hz) {
 
     int i = 0;
 
-    //int time = 0;
+    int time = 0;
     
-    while(1) { //time < 200000
+    while(time < note.time) { //
       int status =  *(pwm + BCM2835_PWM_STATUS);
       
       if (!(status & BCM2835_FULL1)) {
@@ -184,7 +191,7 @@ void audio_send_tone(wave_type_t type, unsigned int hz) {
         *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
       } 
 
-      //time++;
+      time++;
     }
   }
 }
@@ -196,7 +203,7 @@ void audio_init() {
   SET_GPIO_ALT(45, 0);
   delay_us(2000);
   for (i = 0; i < 64; i++) {
-    waveform_square[i] = 0;//(i < 32)? 0: 64;
+    waveform_square[i] = (i < 32)? 0: 64;
     waveform_triangle[i] = (i < 32)? (2 * i) : 64 - (2 * (i - 32));
     waveform_saw[i] = i;
   }
@@ -274,7 +281,7 @@ unsigned waveform_sine[] = {32,
 void audio_send_1kHz() {
     //loop through space in memory that contains a sequence of notes that will then be sent to audio_send_tone to create a melody? -all sin wave with different frequencies?
     
-  audio_send_tone(WAVE_SQUARE, 10000);
+  //audio_send_tone(WAVE_SQUARE, 10000);
   //delay(10000);
   //audio_send_tone(WAVE_SINE, 60000);
 
