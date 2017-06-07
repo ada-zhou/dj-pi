@@ -7,7 +7,7 @@ CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
 LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib
 LDLIBS = -lgcc
  
-OBJECTS = start.o cstart.o audio.o
+OBJECTS = start.o cstart.o audio.o memcpy.o song.o
 LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modules/timer.o $(LIBPI)/modules/printf.o $(LIBPI)/modules/uart.o $(LIBPI)/modules/gpioextra.o 
 all : $(NAME).bin
 

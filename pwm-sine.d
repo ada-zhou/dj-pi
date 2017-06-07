@@ -1,1 +1,1 @@
-pwm-sine.o: pwm-sine.c audio.h
+pwm-sine.o: pwm-sine.c memcpy.h audio.h song.h
