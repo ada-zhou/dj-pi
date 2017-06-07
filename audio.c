@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "audio.h"
 #include "printf.h"
+#include "peripherals.h"
 
 #define BCM2708_PERI_BASE 0x20000000
 #define GPIO_BASE         (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
@@ -70,6 +71,10 @@
 #define ERRORMASK (BCM2835_GAPO2 | BCM2835_GAPO1 | \
 BCM2835_RERR1 | BCM2835_WERR1)
 #define MAXPRINT 5
+
+#define SPEED_ONE 1
+#define SPEED_TWO 2
+
 volatile unsigned* gpio = (void*)GPIO_BASE;
 volatile unsigned* clk  = (void*)CLOCK_BASE;
 volatile unsigned* pwm  = (void*)PWM_BASE;
@@ -133,6 +138,8 @@ unsigned int audio_set_clock(unsigned int frequency) {
 
 void audio_send_tone(notes_t note, int volume_multiplyer) {
     
+    volume_multiplyer = getVolume();
+    speed_multiplyer = getSpeed(SPEED_ONE);
     printf("%d\n", note.tone);
     
     
@@ -149,6 +156,7 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
     }
      **/
     
+    //int speed_tw0 = getSpeed(SPEED_TWO);
     
     
     if (audio_set_clock(note.tone)) {
