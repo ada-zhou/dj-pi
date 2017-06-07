@@ -8,7 +8,7 @@ LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib
 LDLIBS = -lgcc
  
 OBJECTS = start.o cstart.o audio.o memcpy.o song.o
-LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modules/timer.o $(LIBPI)/modules/printf.o $(LIBPI)/modules/uart.o $(LIBPI)/modules/gpioextra.o 
+LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modules/timer.o $(LIBPI)/modules/printf.o $(LIBPI)/modules/uart.o $(LIBPI)/modules/gpioextra.o $(LIBPI)/modules/spi.o 
 all : $(NAME).bin
 
 $(NAME).elf: $(NAME).o $(OBJECTS) $(LIBPI_MODULES)
