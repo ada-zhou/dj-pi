@@ -9,7 +9,7 @@
 #ifndef sine_h
 #define sine_h
 
-#include <stdio.h>
+
 
 double power(double x, double exponent);
 double sine(double x);

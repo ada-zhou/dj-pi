@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "printf.h"
 #include "peripherals.h"
+#include "sine.h"
 
 #define BCM2708_PERI_BASE 0x20000000
 #define GPIO_BASE         (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
@@ -143,7 +144,7 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
     //printf("%d\n", note.tone);
     
     
-    unsigned* waveform = waveform_sine;
+    //unsigned* waveform = waveform_sine;
     /**
     if (type == WAVE_TRIANGLE) {
         waveform = waveform_triangle;
@@ -158,8 +159,10 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
     
     //int speed_tw0 = getSpeed(SPEED_TWO);
     
+
+   // printf("Struct Note: %d ", note.tone);
     
-    if (audio_set_clock(note.tone)) {
+    if (audio_set_clock(1000)) {
         // Start the clock
         // enable (ENAB) + oscillator
         // raspbian has this as plla
@@ -168,12 +171,12 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
         BCM2835_CM_ENAB |
         BCM2835_CM_OSCILLATOR;
         
-        delay_us(2000);
+        delay_us(50);
         
         // disable PWM
         *(pwm + BCM2835_PWM_CONTROL) = 0;
         
-        delay_us(2000);
+        delay_us(50);
         
         // We are dividing each "step" of the sinusoid into 128
         // pulse slots.
@@ -188,9 +191,9 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
         BCM2835_PWM0_ENABLE |
         1 << 6; // Clear the FIFO of any old data
         
-        delay_us(2000);
+        delay_us(50);
         
-        int i = 0;
+        //int i = 0;
         
         int timer = 0;
         
@@ -198,9 +201,13 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
             int status =  *(pwm + BCM2835_PWM_STATUS);
             
             if (!(status & BCM2835_FULL1)) {
-                *(pwm+BCM2835_PWM_FIFO) = waveform[i] / volume_multiplyer;
-                i++;
-                i = i % 64;
+                double passed = (double)timer * (double)note.tone * 6.28318 / (1000.0 * 64.0);
+                //printf("passed: %d ", (int)(passed*1000));
+                double value = 32.0 * sine(passed) + 32.0;
+                //printf("value: %d ", (int) value);
+                *(pwm+BCM2835_PWM_FIFO) = value / volume_multiplyer;
+                //i++;
+                //i = i % 64;
             }
             if ((status & ERRORMASK)) {
                 *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
@@ -208,6 +215,7 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
             
             timer += speed_multiplyer;
         }
+        
     }
 }
 
