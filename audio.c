@@ -138,9 +138,9 @@ unsigned int audio_set_clock(unsigned int frequency) {
 
 void audio_send_tone(notes_t note, int volume_multiplyer) {
     
-    volume_multiplyer = getVolume();
-    speed_multiplyer = getSpeed(SPEED_ONE);
-    printf("%d\n", note.tone);
+    //volume_multiplyer = getVolume();
+    //speed_multiplyer = getSpeed(SPEED_ONE);
+    //printf("%d\n", note.tone);
     
     
     unsigned* waveform = waveform_sine;
