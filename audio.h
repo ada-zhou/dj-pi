@@ -65,11 +65,18 @@ typedef enum {
 } tones_t;
 
 typedef enum {
-    WHOLE = 40000*2,
-    HALF = 20000*2,
-    QTR = 10000*2,
-    //1000000 * 5
-    EIT = 5000*2,
+    
+    WHOLE = 4000000 * 5,
+    HALF = 2000000 * 5,
+    QTR = 1000000 * 5,
+    EIT = 500000 * 5,
+    
+    /*
+    WHOLE = 40000,
+    HALF = 20000,
+    QTR = 10000,
+    EIT = 5000,
+    */
     
 } times_t;
 

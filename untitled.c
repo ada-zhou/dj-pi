@@ -5,7 +5,6 @@
 #include "audio.h"
 #include "printf.h"
 #include "peripherals.h"
-#include "sine.h"
 
 #define BCM2708_PERI_BASE 0x20000000
 #define GPIO_BASE         (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
@@ -88,6 +87,7 @@ unsigned waveform_sine[];
 
 int speed_multiplyer = 5;
 
+double cross_fade = 0.5;
 
 
 
@@ -137,14 +137,15 @@ unsigned int audio_set_clock(unsigned int frequency) {
  */
 
 
-void audio_send_tone(notes_t note, int volume_multiplyer) {
+void audio_send_tone(notes_t note_one, notes_t note_two,  int volume_multiplyer) {
     
     //volume_multiplyer = getVolume();
     //speed_multiplyer = getSpeed(SPEED_ONE);
     //printf("%d\n", note.tone);
     
+    cross_fade = getFade();
     
-    //unsigned* waveform = waveform_sine;
+    unsigned* waveform = waveform_sine;
     /**
     if (type == WAVE_TRIANGLE) {
         waveform = waveform_triangle;
@@ -158,49 +159,9 @@ void audio_send_tone(notes_t note, int volume_multiplyer) {
      **/
     
     //int speed_tw0 = getSpeed(SPEED_TWO);
+    tones_t tone = (note_one.tone*cross_fade) + (note_two.tone*(1-cross_fade));
     
-
-   // printf("Struct Note: %d ", note.tone);
-    
-   
-        int i = 0;
-        int timer = 0;
-        
-        while(timer < note.time) { //
-            int status =  *(pwm + BCM2835_PWM_STATUS);
-            //* 6.28318 / (1000.0 * 64.0)
-            if (!(status & BCM2835_FULL1)) {
-                double passed = (double)i * (double)note.tone * (6.28318/ 64);
-                
-                double value = 32.0 * sine(passed) + 32.0;
-               // printf("value: %d ", (int)value);
-                *(pwm+BCM2835_PWM_FIFO) = value / 1;
-                i++;
-                i = i % (64);
-              
-            }
-            if ((status & ERRORMASK)) {
-                *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
-            }
-        
-            timer += 1;
-        }
-        
-    
-}
-
-
-void audio_init() {
-    int i;
-    SET_GPIO_ALT(40, 0);
-    SET_GPIO_ALT(45, 0);
-    delay_us(2000);
-    for (i = 0; i < 64; i++) {
-        waveform_square[i] = (i < 32)? 0: 64;
-        waveform_triangle[i] = (i < 32)? (2 * i) : 64 - (2 * (i - 32));
-        waveform_saw[i] = i;
-    }
-     if (audio_set_clock(1000)) {
+    if (audio_set_clock(tone)) {
         // Start the clock
         // enable (ENAB) + oscillator
         // raspbian has this as plla
@@ -230,7 +191,39 @@ void audio_init() {
         1 << 6; // Clear the FIFO of any old data
         
         delay_us(2000);
+        
+        int i = 0;
+        
+        int timer = 0;
+        
+        while(timer < note.time) { //
+            int status =  *(pwm + BCM2835_PWM_STATUS);
+            
+            if (!(status & BCM2835_FULL1)) {
+                *(pwm+BCM2835_PWM_FIFO) = waveform[i] / volume_multiplyer;
+                i++;
+                i = i % 64;
+            }
+            if ((status & ERRORMASK)) {
+                *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
+            }
+            
+            timer += speed_multiplyer;
         }
+    }
+}
+
+
+void audio_init() {
+    int i;
+    SET_GPIO_ALT(40, 0);
+    SET_GPIO_ALT(45, 0);
+    delay_us(2000);
+    for (i = 0; i < 64; i++) {
+        waveform_square[i] = (i < 32)? 0: 64;
+        waveform_triangle[i] = (i < 32)? (2 * i) : 64 - (2 * (i - 32));
+        waveform_saw[i] = i;
+    }
 }
 
 // This is a sinusoid represented as 64 values in the range of [-32, 32]

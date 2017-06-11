@@ -7,12 +7,14 @@ void main() {
     audio_init();
     //play_song(FIREWORKS.notes, FIREWORKS.size);
     //play_song(HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
-    notes_t G = {G5, QTR};
-    notes_t GG = {G3, QTR};
-    while (1) {
-        audio_send_tone(G, 8);
-        audio_send_tone(G, 8);
-    }
+    notes_t G = {G3, QTR};
+    //notes_t GG = {G3, QTR};
+    audio_send_tone(G, 8);
+
+    //while (1) {
+    //    audio_send_tone(G, 8);
+    //    audio_send_tone(G, 8);
+    //}
     
     /*
     double x = sine(4.6);
