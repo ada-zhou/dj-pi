@@ -32,7 +32,7 @@ double sine(double x){
     result -= power(mod_x, 7.0) / seven_factorial;
     result += power(mod_x, 9.0) / nine_factorial;
     result -= power(mod_x, 11.0) / eleven_factorial;
-    //result += power(x, 13.0) / thirteen_factorial;
+    result += power(mod_x, 13.0) / thirteen_factorial;
     return result;
 }
 

@@ -87,7 +87,7 @@ typedef struct {
 
 void audio_init();
 void audio_send_1kHz();
-void audio_send_tone(notes_t note, int volume_multiplyer);
+void audio_send_tone(wave_type_t type, unsigned int hz);
 unsigned int audio_max_tone_hz();
 unsigned int audio_min_tone_hz();
 
