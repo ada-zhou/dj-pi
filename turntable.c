@@ -45,7 +45,7 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
          */
         
         int volume = 1;
-        int crossfade = 0;
+        int crossfade = 100;
         int speed_one = 5;
         int speed_two = 5;
         track_one_status = 1;
