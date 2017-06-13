@@ -66,11 +66,11 @@ typedef enum {
 
 typedef enum {
     
-    WHOLE = 84000 * 5,
-    HALF = 42000 * 5,
-    QTR = 21000 * 5,
-    EIT = 10500 * 5,
-    STAC = 100 * 5,
+    WHOLE = 8400 * 5,
+    HALF = 4200 * 5,
+    QTR = 2100 * 5,
+    EIT = 1050 * 5,
+    STAC = 10 * 5,
     //WHOLE_STAC = WHOLE - 1;
     
     

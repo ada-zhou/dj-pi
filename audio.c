@@ -138,7 +138,7 @@ void audio_send_tone(int hz, int volume) {
     int timer = 0;
     
     
-    while(timer < 10) {
+    while(timer < 100) {
         int status =  *(pwm + BCM2835_PWM_STATUS);
         
         if (!(status & BCM2835_FULL1)) {

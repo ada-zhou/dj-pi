@@ -3,9 +3,21 @@
 #include "song.h"
 #include "sine.h"
 #include "turntable.h"
+#include "peripherals.h"
+
+
+#define SPEED_ONE 1
+#define SPEED_TWO 2
 
 void main() {
     audio_init();
+    
+    peripherals_init();
+    
+    
+    
+    
+    
     
     /*
      printf("Rounded 4.84: %d\n", round_int(4.84));
@@ -23,7 +35,7 @@ void main() {
     //notes_t E = {E4, QTR};
     //notes_t G = {G4, QTR};
     //notes_t CEG = {32775, WHOLE};
-    turntable_run(HERE_COMES_THE_SUN.notes, HERE_COMES_THE_SUN.size, HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
+    turntable_run(TWINKLE_TWINKLE.notes, TWINKLE_TWINKLE.size, HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
     /**
      for (int i = 0; i < 1025; i ++){
      double val = 64.0 * sine( (double)i * 6.28318530718 / 1024.0) + 64.0;

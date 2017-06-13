@@ -8,21 +8,23 @@
 #define SPEED_TWO 2
 #define CROSS_FADE 3
 
-#define PLAY_BUTT GPIO_PIN20
+#define PLAY_BUTT_ONE GPIO_PIN20
+#define PLAY_BUTT_TWO GPIO_PIN21
 
 
 
 void peripherals_init(){
 	mcp3008_init();
 
-	gpio_set_input(PLAY_BUTT);
-	gpio_set_pullup(PLAY_BUTT);
+	gpio_set_input(PLAY_BUTT_ONE);
+	gpio_set_pullup(PLAY_BUTT_ONE);
+    gpio_set_input(PLAY_BUTT_TWO);
+    gpio_set_pullup(PLAY_BUTT_TWO);
 
 
 }
 
-unsigned int getButtonState(int button) {
-    
+unsigned int buttonPressed(int button) {
 	return gpio_read(button);
 
 }
@@ -36,23 +38,30 @@ int getFade(){
 }
 
 int getVolume(){
-	//mcp3008_init();
+
 	double volume = (double)mcp3008_read(VOLUME);
-	int adjusted = (int)((volume/(double)1024)*6);
-	// printf("Volume is: %d\n", volume);
-	// printf("Volume from one to six: %d\n", adjusted);
-	int returned = 1;
-	for (int i = 0; i < adjusted; i++){
-		returned *= 2;
-	}
-	return returned;
+	int adjusted = (int)((6.0*volume/1024.0));
+	
+    if (adjusted == 0) {
+        return 1;
+    } else if (adjusted == 1) {
+        return 2;
+    } else if (adjusted == 2) {
+        return 4;
+    } else if (adjusted == 3) {
+        return 8;
+    } else if (adjusted == 4) {
+        return 16;
+    }
+    return 32;
+
 }
 
 int getSpeed(int channel) {
 	//mcp3008_init();
 	double speed = (double)mcp3008_read(channel);
 	int adjusted = (int)((speed/(double)1024)*10)+1;
-	printf("Speed is %d", adjusted);
+	//printf("Speed is %d", adjusted);
 	return adjusted;
 
 
