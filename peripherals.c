@@ -10,6 +10,8 @@
 
 #define PLAY_BUTT GPIO_PIN20
 
+
+
 void peripherals_init(){
 	mcp3008_init();
 
@@ -20,9 +22,12 @@ void peripherals_init(){
 }
 
 unsigned int getButtonState(int button) {
+    
 	return gpio_read(button);
 
 }
+
+
 
 int getFade(){
 	int fade = ((double)mcp3008_read(CROSS_FADE)/1024.0) * 100;

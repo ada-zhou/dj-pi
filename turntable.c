@@ -20,7 +20,7 @@
 #define PLAY_PAUSE_ONE 0
 #define PLAY_PAUSE_TWO 0
 
-
+//static int status = 1;
 
 
 
@@ -40,8 +40,13 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
         int crossfade = getFade();
         int speed_one = getSpeed(SPEED_ONE);
         int speed_two = getSpeed(SPEED_TWO);
-        track_one_status = getButtonState(PLAY_PAUSE_ONE);
-        track_two_status = getButtonState(PLAY_PAUSE_TWO);
+        if (buttonPressed(PLAY_PAUSE_ONE) {
+         track_one_status = !track_one_status;
+        }
+         if (buttonPressed(PLAY_PAUSE_TWO) {
+         track_two_status = !track_two_status;
+         }
+        
          */
         
         int volume = 1;
