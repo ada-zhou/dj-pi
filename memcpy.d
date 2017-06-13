@@ -1,1 +1,0 @@
-memcpy.o: memcpy.c

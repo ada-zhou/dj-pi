@@ -7,7 +7,7 @@ CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
 LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib
 LDLIBS = -lgcc
  
-OBJECTS = start.o cstart.o audio.o memcpy.o peripherals.o mcp3008.o sine.o
+OBJECTS = start.o cstart.o audio.o memcpy.o peripherals.o mcp3008.o sine.o song.o round.o
 LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modules/printf.o $(LIBPI)/modules/timer.o $(LIBPI)/modules/uart.o $(LIBPI)/modules/gpioextra.o $(LIBPI)/modules/spi.o 
 #
 all : $(NAME).bin

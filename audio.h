@@ -21,44 +21,44 @@ typedef enum {
 
 typedef enum {
     
-    B5 = 988,
-    A5s = 932,
-    A5 = 880,
-    G5s = 831,
-    G5 = 784,
-    F5s = 698,
-    F5 = 698,
-    E5 = 659,
-    D5s = 587,
-    D5 = 587,
-    C5s = 554,
-    C5 = 523,
+    B5 = 98777, //987.77
+    A5s = 93233, //93
+    A5 = 88000,
+    G5s = 83061,
+    G5 = 78399,
+    F5s = 73999,
+    F5 = 69846,
+    E5 = 65926,
+    D5s = 62225,
+    D5 = 58733,
+    C5s = 55437,
+    C5 = 52325,
 
-    B4 = 494,
-    A4s = 466,
-    A4 = 440,
-    G4s = 415,
-    G4 = 392,
-    F4s = 370,
-    F4 = 349,
-    E4 = 330,
-    D4s = 311,
-    D4 = 294,
-    C4s = 277,
-    C4 = 262,
+    B4 = 49388,
+    A4s = 46616,
+    A4 = 44000,
+    G4s = 41530,
+    G4 = 39200,
+    F4s = 36999,
+    F4 = 34923,
+    E4 = 32963,
+    D4s = 31113,
+    D4 = 29366,
+    C4s = 27718,
+    C4 = 26163,
     
-    B3 = 247,
-    A3s = 233,
-    A3 = 220,
-    G3s = 208,
-    G3 = 196,
-    F3s = 185,
-    F3 = 175,
-    E3 = 165,
-    D3s = 156,
-    D3 = 147,
-    C3s = 139,
-    C3 = 262,//131,
+    B3 = 24694,
+    A3s = 23308,
+    A3 = 22000,
+    G3s = 20765,
+    G3 = 19600,
+    F3s = 18500,
+    F3 = 17461,
+    E3 = 16481,
+    D3s = 15556,
+    D3 = 14683,
+    C3s = 13859,
+    C3 = 13082,
     
     REST = 0,
     
@@ -70,6 +70,8 @@ typedef enum {
     HALF = 2000000 * 5,
     QTR = 1000000 * 5,
     EIT = 500000 * 5,
+    //WHOLE_STAC = WHOLE - 1;
+    
     
     /*
     WHOLE = 40000,
@@ -87,7 +89,7 @@ typedef struct {
 
 void audio_init();
 void audio_send_1kHz();
-void audio_send_tone(wave_type_t type, unsigned int hz);
+void audio_send_tone(notes_t note, int volume);
 unsigned int audio_max_tone_hz();
 unsigned int audio_min_tone_hz();
 
