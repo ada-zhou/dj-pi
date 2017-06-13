@@ -66,10 +66,11 @@ typedef enum {
 
 typedef enum {
     
-    WHOLE = 4000000 * 5,
-    HALF = 2000000 * 5,
-    QTR = 1000000 * 5,
-    EIT = 500000 * 5,
+    WHOLE = 84000 * 5,
+    HALF = 42000 * 5,
+    QTR = 21000 * 5,
+    EIT = 10500 * 5,
+    STAC = 100 * 5,
     //WHOLE_STAC = WHOLE - 1;
     
     
@@ -89,7 +90,7 @@ typedef struct {
 
 void audio_init();
 void audio_send_1kHz();
-void audio_send_tone(notes_t note, int volume);
+void audio_send_tone(int hz, int volume);
 unsigned int audio_max_tone_hz();
 unsigned int audio_min_tone_hz();
 

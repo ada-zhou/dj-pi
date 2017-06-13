@@ -131,32 +131,31 @@ unsigned int audio_set_clock(unsigned int frequency) {
 int i = 0;
 double increment_total = 0;
 
-void audio_send_tone(notes_t note, int volume) {
+void audio_send_tone(int hz, int volume) {
  
+    double increment = (double)hz * 16.0 / 1000.0 / 100.0;
     
-    double increment = (double)note.tone * 16.0 / 1000.0 / 100.0;
-    //printf("%d", increment);
     int timer = 0;
     
     
-    while(timer < note.time) {
+    while(timer < 10) {
         int status =  *(pwm + BCM2835_PWM_STATUS);
         
         if (!(status & BCM2835_FULL1)) {
-            *(pwm+BCM2835_PWM_FIFO) =  waveform_sine_custom_64[i];
+            *(pwm+BCM2835_PWM_FIFO) =  waveform_sine_custom_64[i] / volume;
             increment_total += increment;
             if (increment_total >= (double)((int)increment_total) + 0.5)
                 i = increment_total + 1;
             else{
                 i = (int)increment_total;
             }
-            //i = round_int(increment_total);
+            
             i = i % 1024;
         }
         if ((status & ERRORMASK)) {
             *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
         }
-        timer += 5;
+        timer += 1;
         
     }
 }

@@ -2,6 +2,7 @@
 #include "audio.h"
 #include "song.h"
 #include "sine.h"
+#include "turntable.h"
 
 void main() {
     audio_init();
@@ -18,16 +19,18 @@ void main() {
     
     //play_song(TWINKLE_TWINKLE.notes, TWINKLE_TWINKLE.size);
     //play_song(HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
-    notes_t C = {C4, QTR};
-    notes_t E = {E4, QTR};
-    notes_t G = {G4, QTR};
-    notes_t CEG = {32775, WHOLE};
+    //notes_t C = {C4, QTR};
+    //notes_t E = {E4, QTR};
+    //notes_t G = {G4, QTR};
+    //notes_t CEG = {32775, WHOLE};
+    turntable_run(TWINKLE_TWINKLE.notes, TWINKLE_TWINKLE.size, HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
     /**
      for (int i = 0; i < 1025; i ++){
      double val = 64.0 * sine( (double)i * 6.28318530718 / 1024.0) + 64.0;
      printf("%d,\n", (int)(val));
      }
      **/
+    /*
     while(1){
         audio_send_tone(C, 8);
         audio_send_tone(E, 8);
@@ -35,7 +38,7 @@ void main() {
         audio_send_tone(CEG, 8);
     }
     
-    
+    */
     //while (1) {
     //    audio_send_tone(G, 8);
     //    audio_send_tone(G, 8);

@@ -4,6 +4,8 @@
 #include "gpio.h"
 
 #define VOLUME 0
+#define SPEED_ONE 1
+#define SPEED_TWO 2
 #define CROSS_FADE 3
 
 #define PLAY_BUTT GPIO_PIN20
@@ -22,8 +24,8 @@ unsigned int getButtonState(int button) {
 
 }
 
-double getFade(){
-	double fade = (double)mcp3008_read(CROSS_FADE)/1024.0;
+int getFade(){
+	int fade = ((double)mcp3008_read(CROSS_FADE)/1024.0) * 100;
 	return fade;
 
 }
