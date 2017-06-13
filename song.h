@@ -1,6 +1,6 @@
 //
 //  song.h
-//  
+//
 //
 //  Created by Harrison Bronfeld on 6/6/17.
 //
@@ -136,11 +136,11 @@ static songs_t TWINKLE_TWINKLE = {83, {{C4, QTR - STAC},
     {D4, QTR - STAC},
     {REST, STAC},
     {C4, HALF - STAC},
-    }};
+}};
 
 
 //#ABDE
-static songs_t HERE_COMES_THE_SUN = {48, {{REST, QTR},
+static songs_t HERE_COMES_THE_SUN = {211, {{REST, QTR},
     {C4s, EIT - STAC},
     {REST, STAC},
     {A3, EIT - STAC},
@@ -193,12 +193,388 @@ static songs_t HERE_COMES_THE_SUN = {48, {{REST, QTR},
     {C4s, QTR - STAC},
     {REST, STAC},
     {A3, EIT},
+    //begin second line
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {F3s, EIT},
+    {F3s, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {G3s, EIT},
+    {G3s, HALF},
+    {G3s, QTR - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {REST, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {A3, EIT},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {A3, EIT},
+    //begin third line
+    {A3, QTR},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, QTR - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {REST, EIT},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {E3, EIT - STAC},
+    {REST, STAC},
+    {F3s, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {E3, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {D3, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {E3, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {G3s, EIT - STAC},
+    {REST, STAC},
+    {F3s, EIT - STAC},
+    {REST, STAC},
+    {E3, EIT - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    //BEGIN FOURTH LINE
+    {REST, EIT},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {F3s, EIT},
+    {F3s, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {F3s, EIT},
+    {F3s, EIT - STAC},
+    {E3, EIT - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {B3, QTR - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {A3, EIT - STAC},
+    {REST, STAC},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {C4s, QTR},
+    {C4s, EIT - STAC},
+    {REST, STAC},
+    {REST, EIT},
+    {C4s, QTR - STAC},
+    {REST, STAC},
+    {B3, EIT},
+    {B3, EIT - STAC},
+    {REST, STAC},
+    {A3, QTR - STAC},
+    {REST, STAC},
+    {F3s, EIT},
+    //BEGIN LINE FIVE
+    
+}};
+//A,B,D,E
+static songs_t STAY = {198, {{G4s, SIX - STAC},
+    {REST, STAC},
+    {G4s, SIX - STAC},
+    {REST, STAC},
+    {G4s, SIX - STAC},
+    {REST, STAC},
+    {G4s, SIX - STAC},
+    {REST, STAC},
+    {F4, EIT - STAC},
+    {REST, STAC},
+    {F4, EIT - STAC},
+    {REST, STAC},
+    {D4s, SIX - STAC},
+    {REST, STAC},
+    {D4s, SIX - STAC},
+    {REST, STAC},
+    {D4s, SIX - STAC},
+    {REST, STAC},
+    {D4s, SIX - STAC},
+    {REST, STAC},
+    {C4, EIT - STAC},
+    {REST, STAC},
+    {C4, EIT - STAC},
     {REST, STAC},
     
+    {A3s, SIX - STAC},
+    {REST, STAC},
+    {A3s, SIX - STAC},
+    {REST, STAC},
+    {A3s, SIX - STAC},
+    {REST, STAC},
+    {C4, SIX - STAC},
+    {REST, STAC},
+    {A3s, EIT - STAC},
+    {REST, STAC},
+    {G3s, EIT - STAC},
+    {REST, STAC},
+    {G3s, HALF - STAC},
+    {REST, STAC},
+    
+    {F4, EIT},
+    {F4, SIX - STAC},
+    {REST, STAC},
+    {F4, SIX - STAC},
+    {REST, STAC},
+    {F4, EIT},
+    {F4, SIX - STAC},
+    {REST, STAC},
+    {F4, SIX - STAC},
+    {REST, STAC},
+    {G4, EIT},
+    {G4, SIX - STAC},
+    {REST, STAC},
+    {G4, SIX - STAC},
+    {REST, STAC},
+    {G4, EIT},
+    {G4, SIX - STAC},
+    {REST, STAC},
+    {G4, SIX - STAC},
+    {REST, STAC},
+    
+    {G4s, EIT - STAC},
+    {REST, STAC},
+    {F4, HALF - STAC},
+    {REST, STAC},
+    {F4, EIT - STAC},
+    {REST, STAC},
+    {C5, EIT - STAC},
+    {REST, STAC},
+    {A4s, EIT},
+    
+    {A4s, EIT - STAC},
+    {REST, STAC},
+    {C5, QTR - STAC},
+    {REST, STAC},
+    {REST, QTR},
+    {F4, EIT - STAC},
+    {C5, EIT - STAC},
+    {G4s, EIT},
+    
+    {G4s, EIT - STAC},
+    {REST, STAC},
+    {F4, QTR - STAC},
+    {REST, STAC},
+    {REST, EIT},
+    
+    {C5s, SIX - STAC}, //all
+    {REST, STAC},
+    {C5, SIX - STAC}, // you
+    {REST, STAC},
+    {A4s, SIX - STAC}, //have
+    {REST, STAC},
+    {G4s, SIX - STAC}, //to
+    {REST, STAC},
+    {G4s, EIT - STAC}, // do
+    {REST, STAC},
+    {A4s, EIT - STAC}, // is
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // st-
+    {REST, STAC},
+    {F4, EIT - STAC}, // ay
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // a
+    {REST, STAC},
+    {G4s, SIX - STAC}, //min-
+    {REST, STAC},
+    {A4s, SIX - STAC}, // -n-
+    {REST, STAC},
+    {C5, SIX - STAC}, //ute
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // Just
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // ta-
+    {REST, STAC},
+    {F4, EIT - STAC}, // ke
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // your
+    {REST, STAC},
+    {G4s, QTR - STAC}, // time
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // the
+    {REST, STAC},
+    
+    {G4s, QTR - STAC}, // clock
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // is
+    {REST, STAC},
+    {G4s, SIX - STAC}, //tick-
+    {REST, STAC},
+    {A4s, SIX - STAC}, //-k-
+    {REST, STAC},
+    {C5, SIX - STAC}, //ing
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // so
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // st-
+    {REST, STAC},
+    {F4, QTR - STAC}, // ay
+    {REST, STAC},
+    {REST, QTR},
+    {C5s, SIX - STAC}, //all
+    {REST, STAC},
+    {C5, SIX - STAC}, // you
+    {REST, STAC},
+    {A4s, SIX - STAC}, //have
+    {REST, STAC},
+    {G4s, SIX - STAC}, //to
+    {REST, STAC},
+    {G4s, EIT - STAC}, // do
+    {REST, STAC},
+    {A4s, EIT - STAC}, // is
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // st-
+    {REST, STAC},
+    {F4, EIT - STAC}, // ay
+    {REST, STAC},
+    {REST, QTR},
+    {G4s, EIT - STAC}, // a
+    {REST, STAC},
+    {G4s, SIX - STAC}, //min-
+    {REST, STAC},
+    {A4s, SIX - STAC}, // -n-
+    {REST, STAC},
+    {C5, SIX - STAC}, //ute
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // Just
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // ta-
+    {REST, STAC},
+    {F4, EIT - STAC}, // ke
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // your
+    {REST, STAC},
+    {G4s, QTR - STAC}, // time
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // the
+    {REST, STAC},
+    
+    {G4s, QTR - STAC}, // clock
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // is
+    {REST, STAC},
+    {G4s, SIX - STAC}, //tick-
+    {REST, STAC},
+    {A4s, SIX - STAC}, //-k-
+    {REST, STAC},
+    {C5, SIX - STAC}, //ing
+    {REST, STAC},
+    {REST, EIT},
+    {G4s, EIT - STAC}, // so
+    {REST, STAC},
+    
+    {G4s, EIT - STAC}, // st-
+    {REST, STAC},
+    {F4, QTR - STAC}, // ay
+    {REST, STAC},
+    
+    {REST, WHOLE},
     
     
-    
-    }}; //17
+}};
 
 static songs_t SCALE = {14, {{C4, HALF},
     {D4, QTR},
@@ -214,9 +590,9 @@ static songs_t SCALE = {14, {{C4, HALF},
     {F4, QTR},
     {E4, QTR},
     {D4, QTR}}};
-    
-    
-    
-    
+
+
+
+
 
 #endif /* song_h */

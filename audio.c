@@ -133,6 +133,8 @@ double increment_total = 0;
 
 void audio_send_tone(int hz, int volume) {
  
+    //hz = 44000;
+    
     double increment = (double)hz * 16.0 / 1000.0 / 100.0;
     
     int timer = 0;

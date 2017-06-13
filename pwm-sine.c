@@ -35,7 +35,7 @@ void main() {
     //notes_t E = {E4, QTR};
     //notes_t G = {G4, QTR};
     //notes_t CEG = {32775, WHOLE};
-    turntable_run(TWINKLE_TWINKLE.notes, TWINKLE_TWINKLE.size, HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
+    turntable_run(SCALE.notes, SCALE.size, HOT_CROSS_BUNS.notes, HOT_CROSS_BUNS.size);
     /**
      for (int i = 0; i < 1025; i ++){
      double val = 64.0 * sine( (double)i * 6.28318530718 / 1024.0) + 64.0;
