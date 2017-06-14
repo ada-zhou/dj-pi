@@ -108,12 +108,12 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
         
         
         if (counter % 100 == 60){
-            if (track_one_status == 0) {
+            if (track_one_status == track_two_status) {
+                crossfade = mcp3008_read(CROSS_FADE);
+            } else if (track_one_status == 0) {
                 crossfade = 1024;
             } else if (track_two_status == 0) {
                 crossfade = 0;
-            } else {
-                crossfade = 1024 - (mcp3008_read(CROSS_FADE));
             }
         }
         
@@ -177,7 +177,7 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
         int play_note = 0;
         
         if (track_one_status){
-            play_note = track_one[one_note].tone * crossfade;
+            play_note = track_one[one_note].tone * (1024 - crossfade);
             
             one_pos += 1 * speed_one;
             if (one_pos > track_one[one_note].time) {
@@ -187,7 +187,7 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
             }
         }
         if (track_two_status){
-            play_note += track_two[two_note].tone * (1024 - crossfade);
+            play_note += track_two[two_note].tone * crossfade;
             two_pos += 1 * speed_two;
             if (two_pos > track_two[two_note].time) {
                 two_note++;
