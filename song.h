@@ -11,11 +11,12 @@
 
 #include "audio.h"
 
-typedef struct {
+typedef struct { //song struct
     int size;
     notes_t notes[];
 } songs_t;
 
+//below is a series of hard coded melodies to use in the demo
 static songs_t HOT_CROSS_BUNS = {34, {{B4, QTR - STAC},
     {REST, STAC},
     {A4, QTR - STAC},

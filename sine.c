@@ -15,6 +15,7 @@ static double nine_factorial = 362880.0;
 static double eleven_factorial = 39916800.0;
 static double thirteen_factorial = 6227020800.0;
 
+//simple power function
 double power(double x, double exponent){
     double result = 1;
     for (int i = 0; i < exponent; i++){
@@ -23,8 +24,9 @@ double power(double x, double exponent){
     return result;
 }
 
+//calculates a sine using the taylor series to the 13th degree
 double sine(double x){
-    double mod_x = float_mod(x, 3.1415926);
+    double mod_x = float_mod(x, 3.1415926); //uses float mod on everything greater than pi
     double result = mod_x;
     result -= power(mod_x, 3.0) / three_factorial;
     result += power(mod_x, 5.0) / five_factorial;
@@ -35,6 +37,7 @@ double sine(double x){
     return result;
 }
 
+//simple float mod function
 double float_mod(double x, double y){
     int num_times = x / y;
     if (num_times % 2 == 0){

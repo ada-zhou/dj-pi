@@ -12,14 +12,7 @@
  * Date: September 10 2014
  */
 
-typedef enum {
-    WAVE_SQUARE,
-    WAVE_SINE,
-    WAVE_SAW,
-    WAVE_TRIANGLE
-} wave_type_t;
-
-typedef enum {
+typedef enum {//we have coded in the frequenices of different notes to the hundreths place
     
     B5 = 98777,
     A5s = 93233,
@@ -64,18 +57,18 @@ typedef enum {
     
 } tones_t;
 
-typedef enum {
+typedef enum {//we have coded in int constants for different note speeds
     
-    WHOLE = 8400 * 4,
-    HALF = 4200 * 4,
-    QTR = 2100 * 4,
-    EIT = 1050 * 4,
-    SIX = 525 * 4,
-    STAC = 10 * 4,
+    WHOLE = 33600,
+    HALF = 16800,
+    QTR = 8400,
+    EIT = 4200,
+    SIX = 2100,
+    STAC = 40,
     
 } times_t;
 
-typedef struct {
+typedef struct {//a note contains a frequency (tone) and a time (time)
     tones_t tone;
     times_t time;
 } notes_t;

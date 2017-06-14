@@ -8,6 +8,7 @@
 
 #include "round.h"
 
+//simple rounding function
 int round_int(double num){
     if (num >= (double)((int)num) + 0.5)
         return num + 1;

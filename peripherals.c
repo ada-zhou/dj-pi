@@ -2,6 +2,7 @@
 #include "mcp3008.h"
 #include "printf.h"
 #include "gpio.h"
+#include "gpioextra.h"
 
 #define VOLUME 0
 #define SPEED_ONE 1

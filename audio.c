@@ -75,8 +75,6 @@ volatile unsigned* gpio = (void*)GPIO_BASE;
 volatile unsigned* clk  = (void*)CLOCK_BASE;
 volatile unsigned* pwm  = (void*)PWM_BASE;
 
-unsigned waveform_sine[];
-unsigned waveform_sine_custom[];
 unsigned waveform_sine_custom_64[];
 
 /* This PWM module scales the 19.2MHz clock down to 8.192MHz.
@@ -129,14 +127,14 @@ double increment_total = 0;
 
 void audio_send_tone(int hz, int volume) {
     
-    double increment = (double)hz * 16.0 / 1000.0 / 100.0;
+    double increment = (double)hz * 16.0 / 1000.0 / 100.0; //calculates the increment value for a given frequency
     int timer = 0;
     
-    while(timer < 100) {
+    while(timer < 100) {//plays one "unit" of the note
         int status =  *(pwm + BCM2835_PWM_STATUS);
         
         if (!(status & BCM2835_FULL1)) {
-            *(pwm+BCM2835_PWM_FIFO) =  waveform_sine_custom_64[i] / volume;
+            *(pwm+BCM2835_PWM_FIFO) =  waveform_sine_custom_64[i] / volume; //incremenets through the sine wave array
             increment_total += increment;
             if (increment_total >= (double)((int)increment_total) + 0.5)
                 i = increment_total + 1;
@@ -155,7 +153,6 @@ void audio_send_tone(int hz, int volume) {
 
 
 void audio_init() {
-    int i;
     SET_GPIO_ALT(40, 0);
     SET_GPIO_ALT(45, 0);
     delay_us(2000);
