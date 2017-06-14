@@ -10,6 +10,7 @@
 
 #define PLAY_BUTT_ONE GPIO_PIN20
 #define PLAY_BUTT_TWO GPIO_PIN21
+#define ESCAPE_BUTT GPIO_PIN16
 
 
 
@@ -18,8 +19,12 @@ void peripherals_init(){
 
 	gpio_set_input(PLAY_BUTT_ONE);
 	gpio_set_pullup(PLAY_BUTT_ONE);
+    
     gpio_set_input(PLAY_BUTT_TWO);
     gpio_set_pullup(PLAY_BUTT_TWO);
+    
+    gpio_set_input(ESCAPE_BUTT);
+    gpio_set_pullup(ESCAPE_BUTT);
 
 
 }

@@ -21,8 +21,8 @@ typedef enum {
 
 typedef enum {
     
-    B5 = 98777, //987.77
-    A5s = 93233, //93
+    B5 = 98777,
+    A5s = 93233,
     A5 = 88000,
     G5s = 83061,
     G5 = 78399,
@@ -73,14 +73,6 @@ typedef enum {
     SIX = 525 * 4,
     STAC = 10 * 4,
     
-    
-    /*
-    WHOLE = 40000,
-    HALF = 20000,
-    QTR = 10000,
-    EIT = 5000,
-    */
-    
 } times_t;
 
 typedef struct {
@@ -89,7 +81,6 @@ typedef struct {
 } notes_t;
 
 void audio_init();
-void audio_send_1kHz();
 void audio_send_tone(int hz, int volume);
 unsigned int audio_max_tone_hz();
 unsigned int audio_min_tone_hz();

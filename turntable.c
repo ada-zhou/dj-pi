@@ -22,9 +22,6 @@
 #define PLAY_BUTT_TWO GPIO_PIN21
 #define ESC_BUTT GPIO_PIN16
 
-//static int status = 1;
-
-
 
 void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int size_two){
     int track_one_status = 1;
@@ -48,44 +45,81 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
     
     while (1) {
         
-        /*
-         if (!gpio_read(ESC_BUTT)) {
-         
-         }
-         */
+        //volume = 1;
+        //crossfade = 16;
+        //speed_one = 5;
+        //speed_two = 5;
         
-        
-        
-        if (counter == 100){
-            int read = mcp3008_read(VOLUME);
-            
-            if (read < 171) {
-                volume = 1;
-            } else if (read < 341) {
-                volume = 2;
-            } else if (read < 512) {
-                volume = 4;
-            } else if (read < 683) {
-                volume = 8;
-            } else if (read < 853) {
-                volume = 16;
-            } else {
-                volume = 32;
+        if (counter == 600){
+            if (!gpio_read(ESC_BUTT)) {
+                break;
             }
+            
+            if (!gpio_read(PLAY_BUTT_ONE) ) {
+                track_one_status = !track_one_status;
+                printf("one: %d\n", track_one_status);
+            }
+            if (!gpio_read(PLAY_BUTT_TWO) ) {
+                track_two_status = !track_two_status;
+                printf("two: %d\n", track_two_status);
+            }
+            
+            /*
+            if (one_pressed < 0){
+                if (!gpio_read(PLAY_BUTT_ONE) ) {
+                    track_one_status = !track_one_status;
+                    one_pressed = 50;
+                }
+            } else {
+                one_pressed--;
+            }
+            if (two_pressed < 0) {
+                if (!gpio_read(PLAY_BUTT_TWO) ) {
+                    track_two_status = !track_two_status;
+                    two_pressed = 50;
+                }
+            } else {
+                two_pressed--;
+            }
+             */
             counter = 0;
         }
         
-        if (counter == 25){
-            if (track_one_status == 0) {
-                crossfade = 0;
-            } else if (track_two_status == 0) {
-                crossfade = 1024;
+        
+        if (counter % 100 == 80){
+            
+            int read = mcp3008_read(VOLUME);
+            
+            if (read < 171) {
+                volume = 32;
+            } else if (read < 341) {
+                volume = 16;
+            } else if (read < 512) {
+                volume = 8;
+            } else if (read < 683) {
+                volume = 4;
+            } else if (read < 853) {
+                volume = 2;
             } else {
-                crossfade = (mcp3008_read(CROSS_FADE));
+                volume = 1;
+            }
+            
+        }
+        
+        
+        if (counter % 100 == 60){
+            if (track_one_status == 0) {
+                crossfade = 1024;
+            } else if (track_two_status == 0) {
+                crossfade = 0;
+            } else {
+                crossfade = 1024 - (mcp3008_read(CROSS_FADE));
             }
         }
         
-        if (counter == 50){
+        
+        if (counter % 100 == 40){
+           
             int read_speed_one = mcp3008_read(SPEED_ONE);
             if (read_speed_one < 103) {
                 speed_one = 1;
@@ -108,9 +142,12 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
             } else {
                 speed_one = 10;
             }
+            
+            
         }
         
-        if (counter == 75){
+        
+        if (counter % 100 == 20){
             int read_speed_two = mcp3008_read(SPEED_TWO);
             if (read_speed_two < 103) {
                 speed_two = 1;
@@ -137,61 +174,11 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
         
         counter ++;
         
-        
-        
-        /**
-         if (!gpio_read(PLAY_BUTT_ONE) ) {
-         track_one_status = !track_one_status;
-         }
-         if (!gpio_read(PLAY_BUTT_TWO) ) {
-         
-         track_two_status = !track_two_status;
-         }
-         
-         
-         if (one_pressed < 0){
-         if (!gpio_read(PLAY_BUTT_ONE) ) {
-         track_one_status = !track_one_status;
-         one_pressed = 50;
-         }
-         } else {
-         one_pressed--;
-         }
-         if (two_pressed < 0) {
-         if (!gpio_read(PLAY_BUTT_TWO) ) {
-         track_two_status = !track_two_status;
-         two_pressed = 50;
-         }
-         } else {
-         two_pressed--;
-         }
-         
-         **/
-        
-        /*
-         printf("Volume: %d ", volume);
-         printf("Crossfade: %d ", crossfade);
-         printf("Speed One: %d ", speed_one);
-         printf("Speed Two: %d ", speed_two);
-         printf("Track One: %d ", track_one_status);
-         printf("Track Two: %d \n", track_two_status);
-         
-         
-         */
-        /**
-        volume = 1;
-        crossfade = 1024;
-        speed_one = 1;
-        speed_two = 1;
-        track_one_status = 1;
-        track_two_status = 1;
-        **/
-        
         int play_note = 0;
         
         if (track_one_status){
-            //printf("Note from track: %d\n", track_one[4].tone);
             play_note = track_one[one_note].tone * crossfade;
+            
             one_pos += 1 * speed_one;
             if (one_pos > track_one[one_note].time) {
                 one_note++;
@@ -200,7 +187,6 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
             }
         }
         if (track_two_status){
-            //printf("Note from track: %d\n", track_one[4].tone);
             play_note += track_two[two_note].tone * (1024 - crossfade);
             two_pos += 1 * speed_two;
             if (two_pos > track_two[two_note].time) {
@@ -209,11 +195,7 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
                 two_pos = 0;
             }
         }
-        //printf("Note before calling audio: %d\n", play_note);
         audio_send_tone(play_note / 1024, volume);
-        
-        
-        
     }
     
 }

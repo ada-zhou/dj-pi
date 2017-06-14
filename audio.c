@@ -75,10 +75,6 @@ volatile unsigned* gpio = (void*)GPIO_BASE;
 volatile unsigned* clk  = (void*)CLOCK_BASE;
 volatile unsigned* pwm  = (void*)PWM_BASE;
 
-
-unsigned waveform_square[64];
-unsigned waveform_triangle[64];
-unsigned waveform_saw[64];
 unsigned waveform_sine[];
 unsigned waveform_sine_custom[];
 unsigned waveform_sine_custom_64[];
@@ -132,13 +128,9 @@ int i = 0;
 double increment_total = 0;
 
 void audio_send_tone(int hz, int volume) {
- 
-    //hz = 44000;
     
     double increment = (double)hz * 16.0 / 1000.0 / 100.0;
-    
     int timer = 0;
-    
     
     while(timer < 100) {
         int status =  *(pwm + BCM2835_PWM_STATUS);
@@ -158,7 +150,6 @@ void audio_send_tone(int hz, int volume) {
             *(pwm+BCM2835_PWM_STATUS) = ERRORMASK;
         }
         timer += 1;
-        
     }
 }
 
@@ -168,11 +159,6 @@ void audio_init() {
     SET_GPIO_ALT(40, 0);
     SET_GPIO_ALT(45, 0);
     delay_us(2000);
-    for (i = 0; i < 64; i++) {
-        waveform_square[i] = (i < 32)? 0: 64;
-        waveform_triangle[i] = (i < 32)? (2 * i) : 64 - (2 * (i - 32));
-        waveform_saw[i] = i;
-    }
     
     if (audio_set_clock(1000)) {
         // Start the clock
@@ -2328,8 +2314,3 @@ unsigned waveform_sine_custom[] = {32,
     31,
     32,
 };
-
-
-void audio_send_1kHz() {
-    //audio_send_tone(WAVE_SINE, 1000);
-}
