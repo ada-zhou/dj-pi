@@ -9,5 +9,5 @@
 #include "peripherals.h"
 #include "song.h"
 
-//void turntable_run (songs_t track_one, songs_t track_two);
+
 void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int size_two);

@@ -11,6 +11,6 @@
 
 #include <stddef.h>
 
-memcpy(void *restrict dst, const void *restrict src, size_t n);
+int memcpy(void *restrict dst, const void *restrict src, size_t n);
 
 #endif /* memcpy_h */

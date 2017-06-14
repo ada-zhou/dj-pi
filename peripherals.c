@@ -63,10 +63,8 @@ int getVolume(){
 }
 
 int getSpeed(int channel) {
-	//mcp3008_init();
 	double speed = (double)mcp3008_read(channel);
 	int adjusted = (int)((speed/(double)1024)*10)+1;
-	//printf("Speed is %d", adjusted);
 	return adjusted;
 
 

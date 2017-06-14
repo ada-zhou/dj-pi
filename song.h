@@ -16,8 +16,6 @@ typedef struct {
     notes_t notes[];
 } songs_t;
 
-void play_song(notes_t notes[], int size);
-
 static songs_t HOT_CROSS_BUNS = {34, {{B4, QTR - STAC},
     {REST, STAC},
     {A4, QTR - STAC},
@@ -592,7 +590,56 @@ static songs_t SCALE = {14, {{C4, HALF},
     {D4, QTR}}};
 
 
-
+static songs_t HAPPY_BIRTHDAY = {49, {{D4, EIT - STAC},
+    {REST, STAC},
+    {D4, EIT - STAC},
+    {REST, STAC},
+    {E4, QTR - STAC},
+    {REST, STAC},
+    {D4, QTR - STAC},
+    {REST, STAC},
+    {G4, QTR - STAC},
+    {REST, STAC},
+    {F4s, HALF - STAC},
+    {REST, STAC},
+    {D4, EIT - STAC},
+    {REST, STAC},
+    {D4, EIT - STAC},
+    {REST, STAC},
+    {E4, QTR - STAC},
+    {REST, STAC},
+    {D4, QTR - STAC},
+    {REST, STAC},
+    {A4, QTR - STAC},
+    {REST, STAC},
+    {G4, HALF - STAC},
+    {REST, STAC},
+    {D4, EIT - STAC},
+    {REST, STAC},
+    {D4, EIT - STAC},
+    {REST, STAC},
+    {D5, QTR - STAC},
+    {REST, STAC},
+    {B4, QTR - STAC},
+    {REST, STAC},
+    {G4, QTR - STAC},
+    {REST, STAC},
+    {F4s, QTR - STAC},
+    {REST, STAC},
+    {E4, QTR - STAC},
+    {REST, STAC},
+    {C5, EIT - STAC},
+    {REST, STAC},
+    {C5, EIT - STAC},
+    {REST, STAC},
+    {B4, QTR - STAC},
+    {REST, STAC},
+    {G4, QTR - STAC},
+    {REST, STAC},
+    {A4, QTR - STAC},
+    {REST, STAC},
+    {G4, HALF - STAC},
+    {REST, STAC}}};
 
 
 #endif /* song_h */

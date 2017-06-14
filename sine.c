@@ -26,7 +26,6 @@ double power(double x, double exponent){
 double sine(double x){
     double mod_x = float_mod(x, 3.1415926);
     double result = mod_x;
-    //printf("%d\n", (int)(result * 1000));
     result -= power(mod_x, 3.0) / three_factorial;
     result += power(mod_x, 5.0) / five_factorial;
     result -= power(mod_x, 7.0) / seven_factorial;
@@ -38,7 +37,6 @@ double sine(double x){
 
 double float_mod(double x, double y){
     int num_times = x / y;
-    //printf("%d\n",num_times);
     if (num_times % 2 == 0){
         return x - (y * (double)num_times);
     }

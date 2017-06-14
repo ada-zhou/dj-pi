@@ -33,9 +33,6 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
     int one_pos = 0;
     int two_pos = 0;
     
-    int one_pressed = 50;
-    int two_pressed = 50;
-    
     int counter = 0;
     
     int volume = 0;
@@ -45,11 +42,6 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
     
     while (1) {
         
-        //volume = 1;
-        //crossfade = 16;
-        //speed_one = 5;
-        //speed_two = 5;
-        
         if (counter == 2000){
             if (!gpio_read(ESC_BUTT)) {
                 break;
@@ -57,31 +49,12 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
             
             if (!gpio_read(PLAY_BUTT_ONE) ) {
                 track_one_status = !track_one_status;
-                printf("one: %d\n", track_one_status);
             }
             if (!gpio_read(PLAY_BUTT_TWO) ) {
                 track_two_status = !track_two_status;
-                printf("two: %d\n", track_two_status);
             }
             
-            /*
-            if (one_pressed < 0){
-                if (!gpio_read(PLAY_BUTT_ONE) ) {
-                    track_one_status = !track_one_status;
-                    one_pressed = 50;
-                }
-            } else {
-                one_pressed--;
-            }
-            if (two_pressed < 0) {
-                if (!gpio_read(PLAY_BUTT_TWO) ) {
-                    track_two_status = !track_two_status;
-                    two_pressed = 50;
-                }
-            } else {
-                two_pressed--;
-            }
-             */
+           
             counter = 0;
         }
         
