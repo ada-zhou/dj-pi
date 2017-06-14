@@ -50,7 +50,7 @@ void turntable_run (notes_t track_one[], int size_one, notes_t track_two[], int 
         //speed_one = 5;
         //speed_two = 5;
         
-        if (counter == 600){
+        if (counter == 2000){
             if (!gpio_read(ESC_BUTT)) {
                 break;
             }
