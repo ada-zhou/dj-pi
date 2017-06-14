@@ -1,4 +1,4 @@
-NAME = pwm-sine
+NAME = main
 
 LIBPI = ../cs107e.github.io/libpi
 CPPFLAGS = -I$(LIBPI)/include
